@@ -9,20 +9,9 @@ function onReady(){
     
 }
 
-document.addEventListener("DOMContentLoaded", (event) => {
-    
-
-    form.addEventListener("submit", function (e) {
-        e.preventDefault();
-    });
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-    const inputs = document.querySelectorAll("#employeeForm input");
-
-    inputs.forEach((input) => {
-        console.log(`${input.id}: ${input.value}`);
-    });
-});
+function submitForm(event){
+    event.preventDefault();
+    console.log('Submitted Form');
+}
 
 onReady();
