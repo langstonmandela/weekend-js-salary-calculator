@@ -19,6 +19,13 @@ function submitForm(event){
     const  jobTitle = document.getElementById("jobTitle").value;
     const annualSalary = document.getElementById("annualSalary").value;
     console.log(firstName, lastName, employeeID, jobTitle, annualSalary );
+
+    document.getElementById("firstName").value = '';
+    document.getElementById("lastName").value = '';
+    document.getElementById("employeeID").value = '';
+    document.getElementById("jobTitle").value = '';
+    document.getElementById("annualSalary").value = '';
+    
 }
 
 onReady();
