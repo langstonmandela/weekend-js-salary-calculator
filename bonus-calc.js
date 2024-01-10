@@ -1,5 +1,6 @@
 console.log("---- Weekend Bonus Calcutor ----");
 
+let salary = 0;
 
 
 function submitForm(event){
@@ -16,19 +17,21 @@ function submitForm(event){
     const tableBody = document.querySelector("tbody");
     
     const newRow = document.createElement("tr");
-    
     newRow.innerHTML = `
         <td>${firstName}</td>
         <td>${lastName}</td>
         <td>${employeeID}</td>
         <td>${jobTitle}</td>
-        <td>${annualSalary}</td>
-        <td><button class="delete-button" onClick="removeRow(event)">Delete</button></td>`; //remove row function will need to be built
+        <td>$${parseFloat(annualSalary).toFixed(2)}</td>
+        <td><button class="delete-button" onClick="removeRow(event)">Delete</button></td>
+    `; //remove row function will need to be built
+    
+    
+    
         
         
         tableBody.appendChild(newRow);
-        
-        console.log(tableBody);
+        updateTotalMonthly();
         
         document.getElementById("firstName").value = '';
         document.getElementById("lastName").value = '';
@@ -38,9 +41,21 @@ function submitForm(event){
         
     }
 
+
+    function updateTotalMonthly() {
+        const salaryElements = document.querySelectorAll('td:nth-child(5)');
+        let totalAnnualSalary = 0;
+        salaryElements.forEach(function (salaryElement) {
+            totalAnnualSalary += parseFloat(salaryElement.textContent.replace(/\$|,/g, '')) || 0;
+        });
+        const totalMonthly = totalAnnualSalary / 12;
+        document.getElementById('totalMonthly').textContent = `$${totalMonthly.toFixed(2)}`;
+    }
+
     function removeRow(event){
         console.log(event.target);
         event.target.closest('tr').remove();
+        updateTotalMonthly();
         
     }
 
