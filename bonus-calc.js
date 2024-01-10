@@ -35,6 +35,8 @@ function submitForm(event){
 
     tableBody.appendChild(newRow);
 
+    console.log(tableBody);
+
     document.getElementById("firstName").value = '';
     document.getElementById("lastName").value = '';
     document.getElementById("employeeID").value = '';
